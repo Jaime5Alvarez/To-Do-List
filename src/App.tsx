@@ -60,7 +60,7 @@ export function App() {
     }
   }, [completedState, tasks, filterNonCompletedTasks]);
   return (
-    <div className="bg-blue-200 py-5 min-h-screen flex flex-col justify-center items-center font-mono">
+    <div className="bg-blue-200 px-5 py-5 min-h-screen flex flex-col justify-center items-center font-mono">
       <motion.h3
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -69,7 +69,7 @@ export function App() {
       >
         TODO-LIST-APP
       </motion.h3>
-      <div className="bg-white shadow-lg overflow-y-auto  mt-5 w-96 py-2 rounded-xl ">
+      <div className="bg-white  w-72 lg:w-4/12 shadow-lg overflow-y-auto  mt-5  py-2 rounded-xl ">
         <div className="flex ">
           <input
             className="w-10/12 m-1 bg-gray-100 rounded-xl px-3  focus:outline-none border-2 border-gray-200"
