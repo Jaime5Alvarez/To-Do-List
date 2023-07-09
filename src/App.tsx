@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Tasks } from "./components/tasks";
 import { Task } from "./interfaces";
@@ -52,7 +52,7 @@ export function App() {
     } else {
       setNoncompletedTasks([]);
     }
-  }, [completedState, tasks]);
+  }, [completedState, tasks, filterNonCompletedTasks]);
   return (
     <div className="bg-blue-200 py-5 min-h-screen flex justify-center items-center font-mono">
       <div className="bg-white shadow-lg overflow-y-auto  mt-5 w-96 py-2 rounded-xl ">
