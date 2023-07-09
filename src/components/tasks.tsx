@@ -28,7 +28,7 @@ export const Tasks = ({ tasks, setTasks }: Props) => {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className={`mt-5 relative my-1 text-gray-700 bg-slate-300 font-extralight rounded-xl px-2 cursor-pointer text-sm  ${
+                className={`mt-3 relative my-1 text-gray-700 bg-slate-300 font-extralight rounded-xl px-2 cursor-pointer text-sm  ${
                   task.completed && "line-through"
                 }`}
               >
