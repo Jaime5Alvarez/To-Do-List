@@ -17,17 +17,40 @@ export const Tasks = ({ tasks, setTasks }: Props) => {
     const newList = tasks.filter((item) => item.id != id);
     setTasks(newList);
   };
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
+  };
 
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
   return (
     <ul>
-      <Reorder.Group axis="y" values={tasks} onReorder={setTasks}>
+      <Reorder.Group
+        axis="y"
+        values={tasks}
+        variants={container}
+        onReorder={setTasks}
+      >
         {tasks.map((task) => {
           return (
             <Reorder.Item key={task.id} value={task}>
               <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
+                variants={item}
+                initial="hidden"
+                animate="visible"
                 className={`mt-3 relative my-1 text-gray-700 bg-slate-300 font-extralight rounded-xl px-2 cursor-pointer text-sm  ${
                   task.completed && "line-through"
                 }`}
