@@ -26,6 +26,11 @@ export function App() {
       name: "100 push ups",
       completed: true,
     },
+    {
+      id: "dwdsdwweejo8e3",
+      name: "Conquer Nadia ❤️",
+      completed: false,
+    },
   ]);
 
   const AddTask = () => {
