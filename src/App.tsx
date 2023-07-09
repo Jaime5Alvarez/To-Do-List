@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Tasks } from "./components/tasks";
 import { Task } from "./interfaces";
+import { motion } from "framer-motion";
 
 export function App() {
   const [inputTask, setInputTask] = useState<string>("");
@@ -47,10 +48,10 @@ export function App() {
   const handleCompletedTaksState = () => {
     setcompletedState(!completedState);
   };
-  const filterNonCompletedTasks = () => {
+  const filterNonCompletedTasks = useCallback(() => {
     const completedTasks = tasks.filter((item) => item.completed == false);
     setNoncompletedTasks(completedTasks);
-  };
+  }, [tasks]);
   useEffect(() => {
     if (completedState) {
       filterNonCompletedTasks();
@@ -59,7 +60,15 @@ export function App() {
     }
   }, [completedState, tasks, filterNonCompletedTasks]);
   return (
-    <div className="bg-blue-200 py-5 min-h-screen flex justify-center items-center font-mono">
+    <div className="bg-blue-200 py-5 min-h-screen flex flex-col justify-center items-center font-mono">
+      <motion.h3
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="font-bold text-4xl"
+      >
+        TODO-LIST-APP
+      </motion.h3>
       <div className="bg-white shadow-lg overflow-y-auto  mt-5 w-96 py-2 rounded-xl ">
         <div className="flex ">
           <input

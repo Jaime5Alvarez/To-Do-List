@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { Props } from "../interfaces";
-import { Reorder } from "framer-motion";
+import { Reorder, motion } from "framer-motion";
 
 export const Tasks = ({ tasks, setTasks }: Props) => {
   const completeTask = (id: string) => {
@@ -17,14 +17,18 @@ export const Tasks = ({ tasks, setTasks }: Props) => {
     const newList = tasks.filter((item) => item.id != id);
     setTasks(newList);
   };
+
   return (
     <ul>
       <Reorder.Group axis="y" values={tasks} onReorder={setTasks}>
         {tasks.map((task) => {
           return (
             <Reorder.Item key={task.id} value={task}>
-              <div
-                className={` relative my-1 text-gray-700 bg-slate-300 font-extralight rounded-xl px-2 cursor-pointer text-sm  ${
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className={`mt-5 relative my-1 text-gray-700 bg-slate-300 font-extralight rounded-xl px-2 cursor-pointer text-sm  ${
                   task.completed && "line-through"
                 }`}
               >
@@ -39,7 +43,7 @@ export const Tasks = ({ tasks, setTasks }: Props) => {
                 >
                   x
                 </button>
-              </div>
+              </motion.div>
             </Reorder.Item>
           );
         })}
