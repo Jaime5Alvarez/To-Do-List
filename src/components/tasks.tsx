@@ -62,7 +62,7 @@ export const Tasks = ({ tasks, setTasks }: Props) => {
 
                 <button
                   onClick={() => handleRemove(task.id)}
-                  className="absolute right-4 top-[3px] text-xs rounded-full bg-white text-slate-300 px-1"
+                  className="absolute right-4 top-[2px] text-xs rounded-full bg-white text-slate-300 px-1 "
                 >
                   x
                 </button>
